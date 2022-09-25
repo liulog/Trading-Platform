@@ -12,6 +12,6 @@ Software Engineering Course
 | Lcz-hust | 刘从政 |      |      |
 |  liulog  | 刘景宇 |      |      |
 | zhige-w  | 武传航 |      |      |
-|          | 陈俊聪 |      |      |
+| reflash2000 | 陈俊聪 |      |      |
 
 
