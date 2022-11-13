@@ -1,0 +1,35 @@
+server:
+    port: 8080
+
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://rm-bp1d30t40g1w2q3yfzo.mysql.rds.aliyuncs.com:3306/trade
+        username: root
+        password: SQLroot123
+
+mybatis:
+    type-aliases-package: com.hust.tradingplatform.model
+    mapper-locations: classpath:mappers/*.xml
+    #??mapper??
+    mapper:
+        #???????
+        mappers: work.huangxin.mango.basemapper
+        identity: MYSQL
+
+# ??,????????
+logging:
+level:
+work.huangxin.mango.mapper: debug
+
+spring.jackson.date-format: yyyy-MM-dd HH:mm
+
+#??????????????????????????8??
+spring.jackson.time-zone: GMT+8
+#
+pagehelper:
+helperDialect: mysql
+reasonable: true
+supportMethodsArguments: true
+params: count=countSql

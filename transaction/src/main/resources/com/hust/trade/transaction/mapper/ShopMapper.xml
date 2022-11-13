@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hust.trade.transaction.mapper.ShopMapper">
+  <resultMap id="BaseResultMap" type="com.hust.trade.transaction.model.Shop">
+    <id column="shop_id" jdbcType="INTEGER" property="shopId"/>
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName"/>
+    <result column="shop_intro" jdbcType="VARCHAR" property="shopIntro"/>
+    <result column="shop_phone" jdbcType="VARCHAR" property="shopPhone"/>
+    <result column="shop_avatar" jdbcType="VARCHAR" property="shopAvatar"/>
+    <result column="shop_latitude" jdbcType="VARCHAR" property="shopLatitude"/>
+    <result column="shop_longitude" jdbcType="VARCHAR" property="shopLongitude"/>
+    <result column="shop_create_time" jdbcType="TIMESTAMP" property="shopCreateTime"/>
+  </resultMap>
+
+  <resultMap type="com.hust.trade.transaction.model.Shop" id="getShopDetailById">
+    <id column="shop_id" jdbcType="INTEGER" property="shopId"/>
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName"/>
+    <result column="shop_intro" jdbcType="VARCHAR" property="shopIntro"/>
+    <result column="shop_phone" jdbcType="VARCHAR" property="shopPhone"/>
+    <result column="shop_avatar" jdbcType="VARCHAR" property="shopAvatar"/>
+    <result column="shop_latitude" jdbcType="VARCHAR" property="shopLatitude"/>
+    <result column="shop_longitude" jdbcType="VARCHAR" property="shopLongitude"/>
+    <result column="shop_create_time" jdbcType="TIMESTAMP" property="shopCreateTime"/>
+
+    <collection property="shopImages" ofType="com.hust.trade.transaction.model.ShopBusiness" javaType="list">
+      <result column="shop_business.shop_goods_image" javaType="String"/>
+      <result column="shop_business.shop_goods_title" javaType="String"/>
+      <result column="shop_business.shop_goods_price" javaType="String"/>
+    </collection>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    shop_id, shop_name, shop_intro, shop_phone, shop_avatar, shop_latitude, shop_longitude, shop_create_time
+  </sql>
+
+
+</mapper>

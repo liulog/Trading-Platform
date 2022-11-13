@@ -1,0 +1,34 @@
+# 服务端口配置
+server:
+  port: 8080
+
+# 设置数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1d30t40g1w2q3yfzo.mysql.rds.aliyuncs.com:3306/trade?serverTimezone=UTC
+    username: root
+    password: SQLroot123
+    type: com.alibaba.druid.pool.DruidDataSource
+  main:
+    allow-circular-references: true
+
+# 日志
+logging:
+  level:
+    root: info
+
+mybatis-plus:
+  mapper-locations: classpath:com/hust/trade/transaction/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+  type-aliases-package: com.hust.trade.transaction.model
+
+# 分页相关配置
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
