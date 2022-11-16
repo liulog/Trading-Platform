@@ -31,6 +31,10 @@ Page({
         isLoading: true
       })
     }, 500)
+
+
+
+
   },
   onLoad() {
 

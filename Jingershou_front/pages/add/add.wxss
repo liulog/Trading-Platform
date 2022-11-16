@@ -8,7 +8,7 @@
   background-color: wheat;
   padding: 20rpx;
   margin: 60rpx;
-  color: red;
+  color: #999;
   font-size: 25rpx;
 }
 
@@ -19,7 +19,7 @@
 
 navigator {
   display: inline-block;
-  color: red;
+  color: blue;
 }
 
 .submit {

@@ -7,6 +7,7 @@
       <view class="pulse-bubble pulse-bubble-3"></view>
     </view>
   </view>
+
 </view>
 
 
@@ -24,7 +25,7 @@
             <text>{{userInfo.nickName==null?"登陆后查看":userInfo.nickName}}</text>
           </view>
           <view class="user_time">
-            <text style="display:{{userInfo.province==null?'none':''}}">来自{{userInfo.province!=""?userInfo.province+"省":"火星"}}{{userInfo.city!=""?userInfo.city+"市":""}}的{{userInfo.gender==1?"帅气小哥哥":"美丽小姐姐"}}</text>
+            <text style="display:{{userInfo.province==null?'none':''}}">来自{{userInfo.province!=""?userInfo.province+"省":"火星"}}{{userInfo.city!=""?userInfo.city+"市":""}}的{{userInfo.gender==1?"帅气小伙":"漂亮小姐姐"}}</text>
           </view>
         </view>
       </view>
@@ -56,7 +57,16 @@
         </view>
       </navigator>
     </view>
-    
+    <view class="me_operation">
+      <view bindtap="attention">
+        <text class="iconfont icon-follow"></text>
+        <text style="margin-left:10rpx;">关注我们</text>
+      </view>
+      <view>
+        <text class="iconfont icon-kefu"></text>
+        <button open-type="contact">我的客服</button>
+      </view>
+    </view>
     <view class="me_operation">
       <navigator url="/pages/agreement/agreement">
         <view>
@@ -64,7 +74,12 @@
           <text style="margin-left:10rpx;">平台约定</text>
         </view>
       </navigator>
-      
+      <navigator url="/pages/me_about/me_about">
+        <view>
+          <text class="iconfont icon-about"></text>
+          <text style="margin-left:10rpx;">关于程序</text>
+        </view>
+      </navigator>
       <view bindtap="call">
         <text class="iconfont icon-lianxi"></text>
         <text style="margin-left:10rpx;">联系我们</text>
@@ -77,7 +92,7 @@
       <text style="margin-left:10rpx;">权限检测</text>
     </view>
   </view>
-  <view style="text-align:center;color:#999;padding:20rpx;font-size:28rpx;">Ver 1.0.0</view>
+  <view style="text-align:center;color:#999;padding:20rpx;font-size:28rpx;">Ver 2.0.7</view>
 
   <view class="zan-dialog {{ showDialog1 ? 'zan-dialog--show' : '' }}">
     <view class="zan-dialog__mask" />

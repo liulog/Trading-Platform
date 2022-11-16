@@ -70,70 +70,9 @@
     </view>
 
 
-    <view class="recommend">
-      <view class="recommend_item_weather">
-        <view class="recommend_top">
-          <text class="recommend_title">天气预报</text>
-          <text style="font-size:25rpx;color:red" decode="{{true}}">&nbsp;&nbsp;{{weatherData.currentCity}}</text>
-        </view>
-        <view class="intro">
-          <view class="intro_item" wx:if="{{weatherData!=null}}">
-            <view>时间 ：{{weatherData.date}}</view>
-            <view>温度 ：{{weatherData.temperature}}</view>
-            <view>PM2.5 ：{{weatherData.pm25}}</view>
-            <view>天气 ：{{weatherData.weatherDesc}}</view>
-            <view>风向 ：{{weatherData.wind}}</view>
-          </view>
-          <view wx:elif="{{weatherData==null}}" style="height:180rpx;width:100%;">
-            <button bindtap="getWeatherData" style="width:100%;background-color:rgb(240,240,240);">点击授权</button>
-          </view>
-        </view>
-      </view>
-      <view class="recommend_item_lost">
-        <view class="recommend_top">
-          <view class="recommend_title">失物招领</view>
-        </view>
-        <view class="intro">
-          <view class="intro_item">
-            <view class="intro_title_lost" id="{{lost_new.messageDetail}}" bindtap="lookLostMessage">{{lost_new.messageDetail}}</view>
-          </view>
-          <view class="time_lost">时间: {{lost_new.messageCreatTime}}</view>
-          <view class="lost_look" id="{{lost_new.messageId}}" bindtap="new_lost_look">查看详情</view>
-        </view>
-      </view>
-    </view>
 
-    <view class="recommend" style="margin-top:5rpx;">
-      <view class="recommend_item_service">
-        <view class="recommend_top">
-          <text class="recommend_title">校园服务</text>
-        </view>
-        <view class="intro">
-          <view class="intro_item">
-            <view bindtap="me_call">商务合作</view>
-          </view>
-        </view>
-      </view>
-      <view class="recommend_item_eat">
-        <view class="recommend_top">
-          <view class="recommend_title">商家服务</view>
-        </view>
-        <view class="intro">
-          <scroll-view class="intro_item" scroll-y>
-            <block wx:for="{{takeout}}" wx:key="{{index}}">
-              <view class="intro_item">
-                <view bindtap="to_shop" id="{{item.shopId}}" class="eat_title">
-                  {{item.shopName}}
-                </view>
-              </view>
-            </block>
-            <view bindtap="me_call" style="margin-top:20rpx;display:{{takeout.length==0?'':'none'}}" class="eat_title">
-              期待你的加入
-            </view>
-          </scroll-view>
-        </view>
-      </view>
-    </view>
+
+    
     <view class="bottom_ad">
       <swiper class="ad">
         <block wx:for="{{ad_bottom}}" wx:key="{{index}}">
@@ -144,15 +83,15 @@
       </swiper>
     </view>
     <view class="title_category">
-      <view style="color:black;font-weight:800">最新发布</view>
+      <view style="color:black;font-weight:800">数码区</view>
       <view style="font-weight:200">
-        <navigator url="/pages/category/category?categoryId=5&categoryName=闲置交易">闲置交易</navigator>
+        <navigator url="/pages/category/category?categoryId=5&categoryName=闲置交易">服装区</navigator>
       </view>
       <view style="font-weight:200">
-        <navigator url="/pages/category/category?categoryId=13&categoryName=问题询问">问题解答</navigator>
+        <navigator url="/pages/category/category?categoryId=13&categoryName=问题询问">图书区</navigator>
       </view>
       <view style="font-weight:200">
-        <navigator url="/pages/category/category?categoryId=11&categoryName=最新消息">最新消息</navigator>
+        <navigator url="/pages/category/category?categoryId=11&categoryName=最新消息">其他</navigator>
       </view>
     </view>
 

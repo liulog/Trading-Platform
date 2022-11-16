@@ -2,22 +2,21 @@
   "pages": [
     "pages/welcome/welcome",
     "pages/index/index",
-    
-    "pages/add/add",
-    "pages/category/category",
+    "pages/zhuce/zhuce",
     "pages/search/search",
-    "pages/add_detail/add_detail",
-    "pages/message_detail/message_detail",
     "pages/agreement/agreement",
-    "pages/me_fabu/me_fabu",
+    "pages/add/add",
+    "pages/message_detail/message_detail",
+    "pages/category/category",
+    "pages/add_detail/add_detail",
     "pages/shop/shop",
     "pages/shop_detail/shop_detail",
     "pages/me/me",
-    
+    "pages/me_fabu/me_fabu",
     "pages/me_canyu/me_canyu",
     "pages/me_shoucang/me_shoucang",
-    "pages/me_xiaoxi/me_xiaoxi"
-    
+    "pages/me_xiaoxi/me_xiaoxi",
+    "pages/me_about/me_about"
   ],
   "permission": {
     "scope.userLocation": {
@@ -36,23 +35,28 @@
       {
         "pagePath": "pages/index/index",
         "text": "主页",
-        "iconPath": "/images/tabBar/home.png",
-        "selectedIconPath": "/images/tabBar/home_active.png"
+        "iconPath": "/images/tabBar/zhuye.png",
+        "selectedIconPath": "/images/tabBar/zhuye_active.png"
       },
       {
         "pagePath": "pages/add/add",
-        "text": "发布",
-        "iconPath": "/images/tabBar/publish.png",
-        "selectedIconPath": "/images/tabBar/publish_active.png"
+        "text": "添加",
+        "iconPath": "/images/tabBar/tianjia.png",
+        "selectedIconPath": "/images/tabBar/tianjia_active.png"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "消息",
+        "iconPath": "/images/tabBar/shangpin.png",
+        "selectedIconPath": "/images/tabBar/shangpin_active.png"
       },
       {
         "pagePath": "pages/me/me",
         "text": "我的",
-        "iconPath": "/images/tabBar/me.png",
-        "selectedIconPath": "/images/tabBar/me_active.png"
+        "iconPath": "/images/tabBar/wode.png",
+        "selectedIconPath": "/images/tabBar/wode_active.png"
       }
-    ],
-    "selectedColor": "5cb4e3"
+    ]
   },
   "requiredBackgroundModes": [
     "audio"

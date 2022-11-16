@@ -45,69 +45,24 @@ Page({
       success: function(e) {
         if (e.confirm) {
           wx.makePhoneCall({
-            phoneNumber: '15671569229',
+            phoneNumber: '18996379281',
           })
         }
       }
     })
   },
   //查看失物招领详情
-  lookLostMessage(e) {
-    wx.showModal({
-      title: '失物招领',
-      content: e.target.id,
-      showCancel: false,
-      confirmText: '已查阅'
-    })
-  },
+
   //商家查看
-  to_shop(e) {
-    wx.navigateTo({
-      url: "/pages/shop_detail/shop_detail?shopId=" + e.target.id
-    })
-  },
+
   //查看最新的失物招领
-  new_lost_look(e) {
-    wx.navigateTo({
-      url: "/pages/message_detail/message_detail?messageId=" + e.currentTarget.id
-    })
-  },
+  
   //点击查看图片
-  look_image(e) {
-    wx.previewImage({
-      urls: [e.target.id],
-    });
-  },
+  
   //查看公告
-  checkNotice(e) {
-    wx.showModal({
-      title: '公告',
-      content: e.target.id,
-      showCancel: false,
-      confirmText: '已查阅'
-    })
-  },
+  
   //授权天气
-  getWeatherData() {
-    let that = this;
-    wx.openSetting({
-      success: function(res) {
-        if (res.authSetting && res.authSetting["scope.userLocation"]) {
-          //允许授权,则自动获取定位，并关闭二确弹窗，否则返回首页不处理
-          wx.showToast({
-            title: '您已授权获取位置信息',
-            icon: 'none'
-          })
-          that.getWeather();
-        } else {
-          wx.showToast({
-            title: '需要授权才可以查看天气噢~',
-            icon: 'none'
-          })
-        }
-      }
-    })
-  },
+ 
   onPageScroll: function(e) { //判断滚轮位置
     if (e.scrollTop > 200) {
       this.setData({

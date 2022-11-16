@@ -1,6 +1,5 @@
 // pages/welcome/welcome.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -12,6 +11,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+
+  
   onLoad: function(options) {
     var that = this;
     that.setData({
@@ -37,7 +38,7 @@ Page({
         return
       }
       wx.switchTab({
-        url: '/pages/index/index',
+        url: '../index/index',
       })
     }
     setTimeout(function() {
@@ -68,7 +69,7 @@ Page({
    */
   onShareAppMessage: function() {
     return {
-      title: "芒果新生活，便利你的生活",
+      title: "鲸二手，便利你的生活",
       imageUrl: "../../images/other/logo.png"
     }
 

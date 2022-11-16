@@ -53,6 +53,22 @@
     </block>
   </view>
 
+<view style="margin:20rpx;font-size:40rpx">
+热门搜索
+</view>
+<button size="mini">二手电脑</button>
+<button size="mini">流浪地球</button>
+<button size="mini">泰山纪念币</button>
+<button size="mini">三体</button>
+<button size="mini">珂润</button>
+<button size="mini">办公桌</button>
+
+<view style="margin:20rpx;font-size:40rpx">
+历史搜索
+</view>
+<button size="mini">村上春树</button>
+<button size="mini">回收</button>
+<button size="mini">篮球鞋</button>
   <view class="end" style="text-align:center;color:#999;font-size:25rpx;margin:10rpx;margin-top:20rpx;display:{{isLastPage?'':'none'}}">
     ————————— End —————————
   </view>

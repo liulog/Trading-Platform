@@ -6,8 +6,8 @@ Page({
   data: {
     // 组件所需的参数
     nvabarData: {
-      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-      title: "发布", //导航栏 中间的标题
+      showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
+      title: "添加", //导航栏 中间的标题
       height: 0
     },
     userId: -1,
@@ -29,6 +29,8 @@ Page({
 
   to_add() {
     let that = this;
+
+
     if (that.data.userId == -1) {
       wx.showModal({
         title: '提示',
@@ -52,7 +54,7 @@ Page({
     } else {
       wx.showModal({
         title: '提示',
-        content: '请先阅读并同意《平台约定》',
+        content: '请先阅读约定',
         showCancel: false,
         confirmText: '去查看',
         success: function(e) {

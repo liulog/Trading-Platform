@@ -4,6 +4,7 @@ const app = getApp()
 var uploadImage = require('../../utils/uploadFile.js');
 var util = require('../../utils/util.js');
 
+
 Page({
     data: {
         // 组件所需的参数
@@ -196,6 +197,7 @@ Page({
             )
             images_url.push(path);
 
+
             that.setData({
                 result_image_url: images_url
             })
@@ -219,7 +221,10 @@ Page({
     },
     submit() {
 
+
         var that = this;
+
+
 
         if (that.trim(that.data.input_intro) == "" || that.trim(that.data.input_intro) < 2) {
             wx.showModal({
@@ -271,7 +276,10 @@ Page({
                     wx.showLoading({
                         title: '发布中~',
                     })
+
                     that.img_upload();
+
+
                     let list = {
                         "categoryId": new Number(that.data.category_index) + 1,
                         "userPhone": that.data.input_phone,

@@ -110,7 +110,7 @@ Page({
         wx.showLoading({
           title: '登陆中~',
         })
-         console.log(that.data.openid)
+        // console.log(that.data.openid)
         // 获取登录的临时凭证
         var code = res.code;
         // 调用后端，获取微信的session_key, secret
@@ -175,6 +175,20 @@ Page({
       })
     }, 500)
   },
+
+  attention() {
+    wx.showModal({
+      title: '提示',
+      content: '公众号名称  芒果微校园',
+      confirmText: "复制",
+      showCancel: false,
+      success: function() {
+        wx.setClipboardData({
+          data: '芒果微校园',
+        })
+      }
+    })
+  },
   call() {
     wx.showModal({
       title: '提示',
@@ -187,11 +201,11 @@ Page({
         if (e.confirm) {
           wx.showModal({
             title: '提示',
-            content: '是否联系(15671569229)',
+            content: '是否联系(18996379281)',
             success: function(e) {
               if (e.confirm) {
                 wx.makePhoneCall({
-                  phoneNumber: '15671569229',
+                  phoneNumber: '18996379281',
                 })
               }
             }
@@ -199,12 +213,12 @@ Page({
         } else {
           wx.showModal({
             title: '提示',
-            content: '微信号：15671569229',
+            content: '微信号：18996379281',
             confirmText: "复制",
             success: function(e) {
               if (e.confirm) {
                 wx.setClipboardData({
-                  data: '15671569229',
+                  data: '18996379281',
                 })
               }
             }

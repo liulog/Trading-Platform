@@ -8,6 +8,6 @@
     <navigator url="/pages/agreement/agreement">《平台约定》</navigator>
   </view>
   <view class="submit">
-    <button type="primary" bindtap="to_add" style="bottom:auto;">去发布</button>
+    <button type="primary" bindtap="to_add">去发布</button>
   </view>
 </view>

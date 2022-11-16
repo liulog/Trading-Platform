@@ -93,8 +93,8 @@
 .wx-switch-input {
     width: 80rpx !important;
     height: 36rpx !important;
-    background: #3ddf37 !important;
-    border: #3ddf37 !important;
+    background: #50D2C2 !important;
+    border: #50d2c2 !important;
     /* 2018-07-18 重置开关边框颜色 */
 }
 
@@ -130,5 +130,5 @@
     padding: 20rpx;
     font-weight: 1000;
     color: white;
-    background-color: #5cb4e3;
+    background-color: #50D2C2;
 }
