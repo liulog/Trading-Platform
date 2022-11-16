@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/welcome/welcome",
+    "pages/index/index",
+    
+    "pages/add/add",
+    "pages/category/category",
+    "pages/search/search",
+    "pages/add_detail/add_detail",
+    "pages/message_detail/message_detail",
+    "pages/agreement/agreement",
+    "pages/me_fabu/me_fabu",
+    "pages/shop/shop",
+    "pages/shop_detail/shop_detail",
+    "pages/me/me",
+    
+    "pages/me_canyu/me_canyu",
+    "pages/me_shoucang/me_shoucang",
+    "pages/me_xiaoxi/me_xiaoxi"
+    
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于天气预报,请给予权限噢"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "/images/tabBar/home.png",
+        "selectedIconPath": "/images/tabBar/home_active.png"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "text": "发布",
+        "iconPath": "/images/tabBar/publish.png",
+        "selectedIconPath": "/images/tabBar/publish_active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "/images/tabBar/me.png",
+        "selectedIconPath": "/images/tabBar/me_active.png"
+      }
+    ],
+    "selectedColor": "5cb4e3"
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "sitemapLocation": "sitemap.json"
+}
