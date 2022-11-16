@@ -28,13 +28,13 @@ public class AddCommentController {
    *  增加评论
    * @param userId 用户唯一标识
    * @param userComment 用户具体的评论
-   * @param messageId
-   * @param messageUserId
-   * @return
+   * @param messageId 消息id
+   * @param messageUserId 消息的发布者user_id
+   * @return IsComment对象
    */
   @Transactional
   @PostMapping("/addComment/{userId}/{messageId}/{messageUserId}")
-  public IsComment addComment(@PathVariable Integer userId, @RequestBody String userComment, @PathVariable Integer messageId, @PathVariable Integer messageUserId) {
+  public IsComment addComment(@PathVariable Long userId, @RequestBody String userComment, @PathVariable Long messageId, @PathVariable Long messageUserId) {
     return new IsComment().isTrue(userId, messageId, userComment, messageUserId, userService, commentService, newMessageService, attendService);
   }
 

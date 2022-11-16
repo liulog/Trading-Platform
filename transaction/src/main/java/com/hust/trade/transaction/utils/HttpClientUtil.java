@@ -36,6 +36,7 @@ public class HttpClientUtil {
         }
       }
       URI uri = builder.build();
+      System.out.println(uri.toString());
 
       // 创建http GET请求
       HttpGet httpGet = new HttpGet(uri);

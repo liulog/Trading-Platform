@@ -35,6 +35,7 @@ public class GetMessageDetailController {
 
   /**
    * 获取某一页所有消息
+   *
    * @param pageNumber 当前的页数
    * @return 返回当前页的所有消息
    */
@@ -56,16 +57,19 @@ public class GetMessageDetailController {
   }
 
   /**
-   * 获取不同 类别的一页的消息
+   * 获取 "不同 类别" 消息
+   *
    * @param categoryId 类别id
    * @param pageNumber 页码
    * @return 返回该页的所有消息
    */
   @PostMapping("/getMessage/getAllMessageDetail/{categoryId}/{pageNumber}")
-  public List<Message> getMessageByCategoryId(@PathVariable Integer categoryId, @PathVariable Integer pageNumber) {
+  public List<Message> getMessageByCategoryId(@PathVariable Integer categoryId,
+      @PathVariable Integer pageNumber) {
     PageHelper.startPage(pageNumber, 8);
 
-    PageInfo<Message> pageInfo = new PageInfo<>(messageDetailService.getMessageByCategoryId(categoryId));
+    PageInfo<Message> pageInfo = new PageInfo<>(
+        messageDetailService.getMessageByCategoryId(categoryId));
 
     if (pageInfo.getPageNum() < pageNumber) {
       List list1 = new LinkedList();
@@ -78,12 +82,14 @@ public class GetMessageDetailController {
 
   /**
    * 获取 消息的图片
-   * @param allMessage 所有的消息
-   * @param userService user服务
+   *
+   * @param allMessage           所有的消息
+   * @param userService          user服务
    * @param messageImagesService messageImage服务
-   * @return 得到图片后的消息列表
+   * @return 得到图片后的消息"列表"
    */
-  public List<Message> getImage(List<Message> allMessage, UserService userService, MessageImagesService messageImagesService) {
+  public List<Message> getImage(List<Message> allMessage, UserService userService,
+      MessageImagesService messageImagesService) {
     for (int i = 0; i < allMessage.size(); i++) {
       allMessage.get(i).setUser(userService.getById(allMessage.get(i).getUserId()));
       MessageImages messageImages = new MessageImages();
@@ -95,34 +101,34 @@ public class GetMessageDetailController {
 
   /**
    * 获取某一消息的具体信息
+   *
    * @param id messageid
    * @return 查询到的消息
    */
   @PostMapping("/getMessageDetailById/{id}")
-  public Message getMessageDetailById(@PathVariable Integer id) {
-    Message message = messageDetailService.getById(id);
+  public Message getMessageDetailById(@PathVariable Long id) {
+    Message message = messageDetailService.getById(id); //消息id
 
     if (message == null) {
       return null;
     }
 
-    Comment comment = new Comment();
+    Comment comment = new Comment();  //评论
     comment.setMessageId(id);
-    List<Comment> comments = commentService.findList(comment);
+    List<Comment> comments = commentService.findList(comment); //一条消息下的评论
     message.setComments(comments);
     User user = userService.getById(message.getUserId());
     message.setUser(user);
 
-
     MessageImages messageImages = new MessageImages();
     messageImages.setMessageId(id);
-    message.setMessageImages(messageImagesService.findList(messageImages));
+    message.setMessageImages(messageImagesService.findList(messageImages)); //根据消息id查找所有图片
 
-    Integer messageWatch = message.getMessageWatch();
+    Integer messageWatch = message.getMessageWatch(); //观看次数
 
     Message message1 = new Message();
     message1.setMessageId(id);
-    message1.setMessageWatch(messageWatch + 1);
+    message1.setMessageWatch(messageWatch + 1); //观看次数+1
     message1.setMessageComment(comments.size());
     messageDetailService.update(message1);
 
@@ -130,31 +136,32 @@ public class GetMessageDetailController {
       return message;
     }
 
-
     for (int i = 0; i < comments.size(); i++) {
       CommentReply commentReply = new CommentReply();
       commentReply.setCommentId(comments.get(i).getCommentId());
       comments.get(i).setCommentReplies(commentReplyService.findList(commentReply));
       comments.get(i).setUser(userService.getById(comments.get(i).getUserId()));
     }
+
     message.setComments(comments);
     return message;
   }
 
   /**
    * 根据用户id获取消息
-   * @param userId 用户id
+   *
+   * @param userId     用户id
    * @param pageNumber 页数
    * @return 得到的消息
    */
   @PostMapping("/getMessage/getMessageDetailByUserId/{userId}/{pageNumber}")
-  public List<Message> getMessageDetailByUserId(@PathVariable Integer userId, @PathVariable Integer pageNumber) {
-
+  public List<Message> getMessageDetailByUserId(@PathVariable Long userId,
+      @PathVariable Integer pageNumber) {
     User user = userService.getById(userId);
 
     if (user.getUserIsAdmin() == 2) {
       PageHelper.startPage(pageNumber, 5);
-      PageInfo<Message> pageInfo = new PageInfo<Message>(messageDetailService.getAllMessage());
+      PageInfo<Message> pageInfo = new PageInfo<>(messageDetailService.getAllMessage());
       List<Message> list = pageInfo.getList();
       getImage(list, userService, messageImagesService);
       if (pageInfo.getPageNum() < pageNumber) {
@@ -165,7 +172,8 @@ public class GetMessageDetailController {
       return list;
     } else {
       PageHelper.startPage(pageNumber, 3);
-      PageInfo<Message> pageInfo = new PageInfo<Message>(messageDetailService.getMessageDetailByUserId(userId));
+      PageInfo<Message> pageInfo = new PageInfo<>(
+          messageDetailService.getMessageDetailByUserId(userId));
       List<Message> list = pageInfo.getList();
       getImage(list, userService, messageImagesService);
       if (pageInfo.getPageNum() < pageNumber) {
@@ -174,10 +182,6 @@ public class GetMessageDetailController {
         return list1;
       }
       return list;
-
     }
-
-
   }
-
 }

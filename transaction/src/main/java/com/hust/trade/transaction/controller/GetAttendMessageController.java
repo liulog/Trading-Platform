@@ -36,9 +36,9 @@ public class GetAttendMessageController {
    * @return 我的发布列表
    */
   @PostMapping("/getMessage/getAttendMessageByUserId/{userId}/{pageNumber}")
-  public List<Message> getAttendMessageByUserId(@PathVariable Integer userId, @PathVariable Integer pageNumber) {
+  public List<Message> getAttendMessageByUserId(@PathVariable Long userId, @PathVariable Integer pageNumber) {
     PageHelper.startPage(pageNumber, 5);
-    PageInfo<Attend> pageInfo = new PageInfo<Attend>(attendService.getAllAttendMessageByUserId(userId));
+    PageInfo<Attend> pageInfo = new PageInfo<>(attendService.getAllAttendMessageByUserId(userId));
 
     if (pageInfo.getPageNum() < pageNumber) {
       List list1 = new LinkedList();
@@ -47,13 +47,12 @@ public class GetAttendMessageController {
     }
     List<Attend> list = pageInfo.getList();
 
-
     List<Message> list1 = new ArrayList<Message>();
     for (Attend attend : list) {
-      Integer messageId = attend.getMessageId();
+      Long messageId = attend.getMessageId();
       Message message = messageDetailService.getById(messageId);
       list1.add(message);
     }
-    return new GetMessageDetailController().getImage(list1, userService, messageImagesService);
+    return new GetMessageDetailController().getImage(list1, userService, messageImagesService); //获取图片
   }
 }

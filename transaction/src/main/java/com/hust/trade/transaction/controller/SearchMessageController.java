@@ -23,11 +23,16 @@ public class SearchMessageController {
   @Autowired
   private MessageImagesService messageImagesService;
 
+  /**
+   * 根据类别和关键字查找
+   * @param categoryId 类别id
+   * @param keyword 关键字
+   * @return 返回符合的消息列表ß
+   */
   @PostMapping("/search/{categoryId}/{keyword}")
-  public List<Message> getMessageByCategoryAndKeyword(@PathVariable Integer categoryId, @PathVariable String keyword) {
+  public List<Message> getMessageByCategoryAndKeyword(@PathVariable Long categoryId, @PathVariable String keyword) {
     List<Message> allMessage = messageDetailService.getMessageByCategoryAndKeyword(categoryId, keyword);
     return new GetMessageDetailController().getImage(allMessage, userService, messageImagesService);
-
   }
 
   /**
@@ -41,7 +46,7 @@ public class SearchMessageController {
 
     PageHelper.startPage(pageNumber, 3);
 
-    PageInfo<Message> pageInfo = new PageInfo<Message>(messageDetailService.getMessageByKeyword(keyword));
+    PageInfo<Message> pageInfo = new PageInfo<>(messageDetailService.getMessageByKeyword(keyword));
 
     if (pageInfo.getPageNum() < pageNumber) {
       List list1 = new LinkedList();

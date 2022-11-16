@@ -32,7 +32,7 @@ public class UserService {
    * @param id
    * @return
    */
-  public User getById(Integer id){
+  public User getById(Long id){
     return userMapper.selectById(id);
   }
 
@@ -47,12 +47,12 @@ public class UserService {
 
   /**
    * 返回符合条件的用户信息
-   *
+   *  根据openid或者id获取用户
    * @param user 用户
    */
   public List<User> getUserMessageByOtherMessage(User user) {
     QueryWrapper<User> qw = new QueryWrapper<>();
-    qw.eq("user_id",user.getUserId());
+    qw.eq("user_openid",user.getUserOpenid()).or().eq("user_id",user.getUserId());
     return userMapper.selectList(qw);
   }
 

@@ -4,27 +4,20 @@ import com.hust.trade.transaction.model.Message;
 import com.hust.trade.transaction.model.User;
 import com.hust.trade.transaction.service.MessageDetailService;
 import com.hust.trade.transaction.service.UserService;
+import lombok.Data;
 
+@Data
 public class IsUpdate {
 
-  private Integer code;
+  private Integer code; //状态码ß
 
-  public Integer getCode() {
-
-    return code;
-  }
-
-  public void setCode(Integer code) {
-    this.code = code;
-  }
-
-  public IsUpdate isTrue(Integer id, Integer messageId, String messageString, MessageDetailService messageDetailService, UserService userService) {
+  public IsUpdate isTrue(Long id, Long messageId, String messageString, MessageDetailService messageDetailService, UserService userService) {
 
     IsUpdate isUpdate = new IsUpdate();
     isUpdate.setCode(500);
-    User user = userService.getById(id);
+    User user = userService.getById(id);  //获取用户
 
-    if (user == null) {
+    if (user == null) {                   //用户不存在ß
       isUpdate.setCode(400);
       return isUpdate;
     }

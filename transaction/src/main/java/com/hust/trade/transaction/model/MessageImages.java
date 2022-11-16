@@ -17,10 +17,10 @@ import lombok.NoArgsConstructor;
 public class MessageImages {
 
   @TableId("image_id")
-  private Integer imageId;
+  private Long imageId;
 
   @TableField("message_id")
-  private Integer messageId;
+  private Long messageId;
 
   @TableField("image_url")
   private String imageUrl;

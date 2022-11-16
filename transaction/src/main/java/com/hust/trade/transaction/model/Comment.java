@@ -19,13 +19,13 @@ import lombok.NoArgsConstructor;
 public class Comment {
 
   @TableId("comment_id")
-  private Integer commentId;
+  private Long commentId;
 
   @TableField("user_id")
-  private Integer userId;
+  private Long userId;
 
   @TableField("message_id")
-  private Integer messageId;
+  private Long messageId;
 
   @TableField("comment_detail")
   private String commentDetail;

@@ -14,8 +14,9 @@ import lombok.NoArgsConstructor;
 public class Swiper {
 
   @TableId("swiper_id")
-  private Integer swiperId;
+  private Long swiperId;
 
   @TableField("swiper_image_url")
   private String swiperImageUrl;
+
 }

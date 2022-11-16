@@ -14,7 +14,10 @@ import com.hust.trade.transaction.service.MessageImagesService;
 import com.hust.trade.transaction.service.NewMessageService;
 import com.hust.trade.transaction.service.UserService;
 import java.util.List;
+import java.util.Objects;
+import lombok.Data;
 
+@Data
 public class IsDelete {
 
   /**
@@ -26,30 +29,22 @@ public class IsDelete {
    * 1000 非法入侵
    */
 
-  private Integer code;
+  private Integer code; //返回的状态码
 
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(Integer code) {
-    this.code = code;
-  }
-
-  public IsDelete isDelete(Integer userId, Integer messageId, MessageImagesService messageImagesService, UserService userService, MessageDetailService messageDetailService, AttendService attendService, CollectService collectService, NewMessageService newMessageService) {
-    IsDelete isDelete = new IsDelete();
+  public IsDelete isDelete(Long userId, Long messageId, MessageImagesService messageImagesService, UserService userService, MessageDetailService messageDetailService, AttendService attendService, CollectService collectService, NewMessageService newMessageService) {
+    IsDelete isDelete = new IsDelete(); //新建删除
     isDelete.setCode(500);
 
-    User user = userService.getById(userId);
+    User user = userService.getById(userId);  //获取用户
 
     if (user == null) {
       isDelete.setCode(1000);
       return isDelete;
     }
 
-    Message message = messageDetailService.getById(messageId);
+    Message message = messageDetailService.getById(messageId);  //根据messageId删除消息
 
-    if (user.getUserIsAdmin() == 2 || message.getUserId() == user.getUserId()) {
+    if (user.getUserIsAdmin() == 2 || Objects.equals(message.getUserId(), user.getUserId())) {  //管理员删除或者用户自己删除
 
       /**
        * 删除对应评论
@@ -60,35 +55,35 @@ public class IsDelete {
        */
       Attend attend = new Attend();
       attend.setMessageId(messageId);
-      attendService.delete(attend);
+      attendService.delete(attend); //根据messageid删除attend
       /**
-       * 删除收藏
+       * 删除"我的收藏"
        */
       Collect collect = new Collect();
       collect.setMessageId(messageId);
-      collectService.delete(collect);
+      collectService.delete(collect); //根据messageid删除collect
 
       /**
        * 删除消息
        */
       NewMessage newMessage = new NewMessage();
       newMessage.setMessageId(messageId);
-      newMessageService.delete(newMessage);
+      newMessageService.delete(newMessage); //根据messageid删除new message
 
-      messageDetailService.deleteById(messageId);
+      messageDetailService.deleteById(messageId);     //删除新消息
       MessageImages messageImages = new MessageImages();
       messageImages.setMessageId(messageId);
       List<MessageImages> images = messageImagesService.findList(messageImages);
       messageImagesService.delete(messageImages);
 
-      // Endpoint以杭州为例，其它Region请按实际情况填写。
-      String endpoint = "你的阿里云实际位置地址";
-      // 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建RAM账号。
-      String accessKeyId = "你的阿里云id";
-      String accessKeySecret = "你的阿里云密钥";
-      String bucketName = "oss名称";
+      // Endpoint:杭州
+      String endpoint = "https://oss-cn-hangzhou.aliyuncs.com";
+      // 阿里云主账号AccessKey拥有所有API的访问权限，风险很高
+      String accessKeyId = "LTAI5tPzQFLdVPKQjkJeg2Zx";
+      String accessKeySecret = "vkIfo2dX8WjrVttFv6Px6Ck9b7pFkK";
+      String bucketName = "tradeplatform1";
 
-      // 创建OSSClient实例。
+      // 创建OSSClient实例，删除oss
       OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
       DeleteAliyunFile deleteAliyunFile = new DeleteAliyunFile();
 
@@ -97,7 +92,7 @@ public class IsDelete {
         deleteAliyunFile.DeleteAliyunFile(objectName, ossClient, bucketName);
       }
       // 关闭OSSClient。
-//            ossClient.shutdown();
+      ossClient.shutdown();
 
       isDelete.setCode(200);
     }

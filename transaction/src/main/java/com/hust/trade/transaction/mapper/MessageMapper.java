@@ -23,8 +23,8 @@ public interface MessageMapper extends BaseMapper<Message> {
   Integer insertMessageDetail(Message message);
   List<Message> getAllMessage();
   List<Message> getMessageByCategoryId(@Param("id") Integer id);
-  List<Message> getMessageByCategoryAndKeyword(@Param("id") Integer id,@Param("keyword") String keyword);
+  List<Message> getMessageByCategoryAndKeyword(@Param("id") Long id,@Param("keyword") String keyword);
   List<Message> getMessageByKeyword(@Param("keyword") String keyword);
-  List<Message> getMessageDetailByUserId(@Param("id") Integer userId);
-  void deleteCommentAndReply(@Param("id") Integer messageId);
+  List<Message> getMessageDetailByUserId(@Param("id") Long userId);
+  void deleteCommentAndReply(@Param("id") Long messageId);
 }

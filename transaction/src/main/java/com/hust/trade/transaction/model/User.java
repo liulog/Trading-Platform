@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class User {
 
   @TableId("user_id")
-  private Integer userId;
+  private Long userId;
 
   @TableField("user_openid")
   private String userOpenid;

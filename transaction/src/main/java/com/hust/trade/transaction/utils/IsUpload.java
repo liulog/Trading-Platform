@@ -7,7 +7,9 @@ import com.hust.trade.transaction.service.MessageDetailService;
 import com.hust.trade.transaction.service.MessageImagesService;
 import com.hust.trade.transaction.service.UserService;
 import java.util.List;
+import lombok.Data;
 
+@Data
 public class IsUpload {
 
   /**
@@ -18,37 +20,36 @@ public class IsUpload {
    * 401  未登录
    * 1000 非法入侵
    */
-  private Integer code;
+  private Integer code;   //要返回的状态码
 
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(Integer code) {
-    this.code = code;
-  }
-
-
+  /**
+   * 发布消息
+   * @param message 具体的消息
+   * @param messageDetailService 消息内容
+   * @param messageImagesService 消息图片
+   * @param userService 用户
+   * @return
+   */
   public IsUpload isTrue(Message message, MessageDetailService messageDetailService, MessageImagesService messageImagesService, UserService userService) {
-    IsUpload isUpload = new IsUpload();
+    IsUpload isUpload = new IsUpload();   //新建发布
 
-    User user = userService.getById(message.getUserId());
+    User user = userService.getById(message.getUserId()); //发布的用户id
 
-    if (user == null) {
+    if (user == null) {                  //用户不存在
       isUpload.setCode(1000);
       return isUpload;
     }
 
-    if(user.getUserAllow()!=1){
+    if(user.getUserAllow()!=1){         //用户被限制发布消息
       isUpload.setCode(301);
       return isUpload;
     }
 
-    List<String> resultImage = message.getResultImage();
+    List<String> resultImage = message.getResultImage();  //获取图片url
 
-    messageDetailService.insertMessageDetail(message);
+    messageDetailService.insertMessageDetail(message);    //插入到数据库中
 
-    for (int i = 0; i < resultImage.size(); i++) {
+    for (int i = 0; i < resultImage.size(); i++) {        //添加图片
       MessageImages messageImages = new MessageImages();
       messageImages.setImageUrl(resultImage.get(i));
       messageImages.setMessageId(message.getMessageId());
@@ -58,7 +59,5 @@ public class IsUpload {
     isUpload.setCode(200);
 
     return isUpload;
-
   }
-
 }

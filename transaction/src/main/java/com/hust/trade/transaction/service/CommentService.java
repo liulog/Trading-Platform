@@ -17,7 +17,7 @@ public class CommentService {
   }
   public List<Comment> findList(Comment comment){
     QueryWrapper<Comment> query = new QueryWrapper<>();
-    query.eq("comment_id",comment.getCommentId());
+    query.eq("message_id",comment.getMessageId());
     return commentMapper.selectList(query);
   }
 

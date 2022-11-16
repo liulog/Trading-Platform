@@ -1,6 +1,8 @@
 package com.hust.trade.transaction.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hust.trade.transaction.mapper.NewMessageMapper;
+import com.hust.trade.transaction.model.Attend;
 import com.hust.trade.transaction.model.NewMessage;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +15,11 @@ public class NewMessageService {
   @Autowired
   private NewMessageMapper newMessageMapper;
 
-  public List<NewMessage> getAllNewMessage(Integer userId) {
+  public List<NewMessage> getAllNewMessage(Long userId) {
     return newMessageMapper.getAllNewMessage(userId);
   }
 
-  public NewMessage getLastNewMessage(Integer id) {
+  public NewMessage getLastNewMessage(Long id) {
     return newMessageMapper.getLastNewMessage(id);
   }
 
@@ -26,6 +28,8 @@ public class NewMessageService {
   }
 
   public void delete(NewMessage newMessage) {
-    newMessageMapper.deleteById(newMessage.getMessageId());
+    QueryWrapper<NewMessage> query = new QueryWrapper<>();
+    query.eq("message_id",newMessage.getMessageId());
+    newMessageMapper.delete(query);
   }
 }

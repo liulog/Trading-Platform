@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hust.trade.transaction.mapper.MessageMapper">
   <resultMap id="BaseResultMap" type="com.hust.trade.transaction.model.Message">
-    <id column="message_id" jdbcType="INTEGER" property="messageId"/>
+    <id column="message_id" jdbcType="BIGINT" property="messageId"/>
     <result column="user_id_anonymity" jdbcType="INTEGER" property="userIdAnonymity"/>
-    <result column="user_id" jdbcType="INTEGER" property="userId"/>
-    <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+    <result column="user_id" jdbcType="BIGINT" property="userId"/>
+    <result column="category_id" jdbcType="BIGINT" property="categoryId"/>
     <result column="user_phone" jdbcType="VARCHAR" property="userPhone"/>
     <result column="user_major" jdbcType="VARCHAR" property="userMajor"/>
     <result column="user_level" jdbcType="VARCHAR" property="userLevel"/>

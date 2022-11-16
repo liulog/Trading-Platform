@@ -9,6 +9,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface CollectMapper extends BaseMapper<Collect> {
 
-  List<Collect> getAllCollectionMessageByUserId(@Param("id") Integer userId);
+  List<Collect> getAllCollectionMessageByUserId(@Param("id") Long userId);
 
 }

@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GetNoticeController {
-
-
   @Autowired
   private NoticeService noticeService;
 

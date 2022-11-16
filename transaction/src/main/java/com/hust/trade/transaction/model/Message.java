@@ -19,16 +19,16 @@ import lombok.NoArgsConstructor;
 public class Message {
 
   @TableId("message_id")
-  private Integer messageId;
+  private Long messageId;
 
   @TableField("user_id_anonymity")
-  private Integer userIdAnonymity;
+  private  Integer userIdAnonymity;
 
   @TableField("user_id")
-  private Integer userId;
+  private Long userId;
 
   @TableField("category_id")
-  private Integer categoryId;
+  private Long categoryId;
 
   @TableField("user_phone")
   private String userPhone;

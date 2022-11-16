@@ -40,7 +40,7 @@ public class MessageDetailService {
    * 在分类里查询信息
    */
 
-  public List<Message> getMessageByCategoryAndKeyword(Integer id, String keyword) {
+  public List<Message> getMessageByCategoryAndKeyword(Long id, String keyword) {
     return messageMapper.getMessageByCategoryAndKeyword(id, keyword);
   }
 
@@ -54,18 +54,18 @@ public class MessageDetailService {
   /**
    * 通过用户id查询
    */
-  public List<Message> getMessageDetailByUserId(Integer userId) {
+  public List<Message> getMessageDetailByUserId(Long userId) {
     return messageMapper.getMessageDetailByUserId(userId);
   }
 
   /**
    * 删除对应信息下的所有评论以及回复
    */
-  public void deleteCommentAndReply(Integer messageId) {
+  public void deleteCommentAndReply(Long messageId) {
     messageMapper.deleteCommentAndReply(messageId);
   }
 
-  public Message getById(Integer id){
+  public Message getById(Long id){
     return messageMapper.selectById(id);
   }
 
@@ -73,7 +73,7 @@ public class MessageDetailService {
     messageMapper.updateById(message);
   }
 
-  public void deleteById(Integer id){
+  public void deleteById(Long id){
     messageMapper.deleteById(id);
   }
 

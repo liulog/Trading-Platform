@@ -23,42 +23,42 @@ public class DeleteCommentByIdController {
   private CommentReplyService commentReplyService;
 
   /**
-   * 根据用户id和commenId来删除评论
-   * @param userId
-   * @param messageId
-   * @return
+   * 根据用户id和commentid来删除评论
+   * @param userId 用户id
+   * @param messageId 消息id
+   * @return 返回状态码
    */
   @Transactional
-  @PostMapping("/deleteCommentByCommentId/{userId}/{messageId}")
-  public Integer deleteCommentByCommentId(@PathVariable Integer userId, @PathVariable Integer messageId) {
-    User user = userService.getById(userId);
+  @PostMapping("/deleteCommentByCommentId/{userId}/{commentId}")
+  public Integer deleteCommentByCommentId(@PathVariable Long userId, @PathVariable Long commentId) {
+    User user = userService.getById(userId);  //获取用户
     if (user == null) {
       return 400;
     }
     Comment comment = new Comment();
     if (user.getUserIsAdmin() == 2) {   //如果是管理员
-      comment.setCommentId(messageId);
+      comment.setCommentId(commentId);
     } else {                            //非管理员
-      comment.setCommentId(messageId);
+      comment.setCommentId(commentId);
       comment.setUserId(userId);
     }
 
     commentService.delete(comment);     //删除评论
     CommentReply commentReply = new CommentReply();
-    commentReply.setCommentId(messageId);
+    commentReply.setCommentId(commentId);
     commentReplyService.delete(commentReply);//删除评论回复相关的内容
     return 200;
   }
 
   /**
    * 删除评论回复
-   * @param userId
-   * @param commentReplyId
+   * @param userId 用户id
+   * @param commentReplyId 评论回复id
    * @return
    */
   @Transactional
   @PostMapping("/deleteCommentReplyByCommentId/{userId}/{commentReplyId}")
-  public Integer deleteCommentReplyByCommentId(@PathVariable Integer userId, @PathVariable Integer commentReplyId) {
+  public Integer deleteCommentReplyByCommentId(@PathVariable Long userId, @PathVariable Long commentReplyId) {
     User user = userService.getById(userId);
     if (user == null) {
       return 400;
@@ -72,7 +72,7 @@ public class DeleteCommentByIdController {
       commentReply.setReplyUserId(userId);
     }
 
-    commentReplyService.delete(commentReply); //删除评论服务
+    commentReplyService.delete(commentReply); //删除评论回复
 
     return 200;
   }

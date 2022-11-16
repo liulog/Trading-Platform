@@ -36,9 +36,7 @@ public class DeleteByUserIdController {
    */
   @Transactional
   @PostMapping("/deleteMessageById/{userId}/{messageId}")
-  public IsDelete deleteByUserId(@PathVariable Integer userId, @PathVariable Integer messageId) {
+  public IsDelete deleteByUserId(@PathVariable Long userId, @PathVariable Long messageId) {
     return new IsDelete().isDelete(userId, messageId, messageImagesService, userService, messageDetailService,attendService,collectService,newMessageService);
   }
-
-
 }

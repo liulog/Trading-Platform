@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GetNewMessageController {
 
-
   @Autowired
   private UserService userService;
   @Autowired
@@ -24,18 +23,18 @@ public class GetNewMessageController {
 
   /**
    * 获取全部 “我的消息”
-   * @param userId 用户唯一标识
+   * @param userId 用户唯一标识id
    * @param pageNumber 页码
    * @return 查到的新消息
    */
   @PostMapping("/getMessage/getAllNewMessage/{userId}/{pageNumber}")
-  public List<NewMessage> getAllNewMessage(@PathVariable Integer userId, @PathVariable Integer pageNumber) {
+  public List<NewMessage> getAllNewMessage(@PathVariable Long userId, @PathVariable Integer pageNumber) {
     User user = userService.getById(userId);
-    if (user == null) {
+    if (user == null) {           //用户不存在
       return null;
     }
     PageHelper.startPage(pageNumber, 10);
-    PageInfo<NewMessage> pageInfo = new PageInfo<NewMessage>(newMessageService.getAllNewMessage(userId));
+    PageInfo<NewMessage> pageInfo = new PageInfo<>(newMessageService.getAllNewMessage(userId));
 
     if (pageInfo.getPageNum() < pageNumber) {
       List list1 = new LinkedList();
@@ -52,15 +51,10 @@ public class GetNewMessageController {
    * @return 最后一条新消息
    */
   @PostMapping("/getMessage/getLastNewMessage/{userId}")
-  public NewMessage getLastNewMessage(@PathVariable Integer userId) {
-
+  public NewMessage getLastNewMessage(@PathVariable Long userId) {
     if (userId == -1) {
       return null;
     }
-
     return newMessageService.getLastNewMessage(userId);
-
   }
-
-
 }

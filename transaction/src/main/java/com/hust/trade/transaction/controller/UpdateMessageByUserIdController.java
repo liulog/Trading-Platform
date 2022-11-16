@@ -27,7 +27,7 @@ public class UpdateMessageByUserIdController {
    */
   @Transactional
   @PostMapping("/updateMessageById/{id}/{messageId}")
-  public IsUpdate updateMessageById(@PathVariable Integer id,@PathVariable Integer messageId,@RequestBody String message){
+  public IsUpdate updateMessageById(@PathVariable Long id,@PathVariable Long messageId,@RequestBody String message){
     return new IsUpdate().isTrue(id,messageId,message,messageDetailService,userService);
   }
 }

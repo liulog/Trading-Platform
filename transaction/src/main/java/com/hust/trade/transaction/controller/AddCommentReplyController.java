@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AddCommentReplyController {
-
   @Autowired
   private UserService userService;
   @Autowired
@@ -33,7 +32,7 @@ public class AddCommentReplyController {
    */
   @Transactional
   @PostMapping("/addCommentReply/{messageId}")
-  public IsCommentReply addCommentReply(@PathVariable Integer messageId, @RequestBody CommentReply commentReply) {
+  public IsCommentReply addCommentReply(@PathVariable Long messageId, @RequestBody CommentReply commentReply) {
     return new IsCommentReply().isTrue(messageId, commentReply, userService, commentReplyService, newMessageService, attendService);
   }
 

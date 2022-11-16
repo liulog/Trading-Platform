@@ -14,12 +14,14 @@ public class CommentReplyService {
   CommentReplyMapper commentReplyMapper;
 
   public void delete(CommentReply commentReply){
-    commentReplyMapper.deleteById(commentReply.getCommentReplyId());
+    QueryWrapper<CommentReply> query = new QueryWrapper<>();
+    query.eq("comment_id",commentReply.getCommentId()).or().eq("comment_reply_id",commentReply.getCommentReplyId());
+    commentReplyMapper.delete(query);
   }
 
   public List<CommentReply> findList(CommentReply commentReply){
     QueryWrapper<CommentReply> query = new QueryWrapper<>();
-    query.eq("comment_reply_id",commentReply.getCommentReplyId());
+    query.eq("comment_id",commentReply.getCommentId());
     return commentReplyMapper.selectList(query);
   }
   public void add(CommentReply commentReply){

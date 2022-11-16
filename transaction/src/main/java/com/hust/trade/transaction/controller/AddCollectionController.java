@@ -30,28 +30,27 @@ public class AddCollectionController {
   private MessageDetailService messageDetailService;
 
   /**
-   * 获取我的收藏
+   * 获取 "我的收藏" 消息
    * @param userId 用户id
    * @param pageNumber 页码
    * @return 消息的列表
    */
   @PostMapping("/getMessage/getAllCollectionMessageByUserId/{userId}/{pageNumber}")
-  public List<Message> getAllCollectionMessageByUserId(@PathVariable Integer userId, @PathVariable Integer pageNumber) {
+  public List<Message> getAllCollectionMessageByUserId(@PathVariable Long userId, @PathVariable Integer pageNumber) {
     PageHelper.startPage(pageNumber, 5);
     PageInfo<Collect> pageInfo = new PageInfo<>(collectService.getAllCollectionMessageByUserId(userId));
 
-    if (pageInfo.getPageNum() < pageNumber) { //活到页面顶端后，返回200状态码
+    if (pageInfo.getPageNum() < pageNumber) {         //滑倒页面顶端后，返回200状态码
       List list1 = new LinkedList();
       list1.add(200);
       return list1;
     }
 
     List<Collect> list = pageInfo.getList();
-
-
     List<Message> list1 = new ArrayList<>();
+
     for (int i = 0; i < list.size(); i++) {
-      Integer messageId = list.get(i).getMessageId();
+      Long messageId = list.get(i).getMessageId();
       Message message = messageDetailService.getById(messageId);
       list1.add(message);
     }
@@ -66,7 +65,7 @@ public class AddCollectionController {
    */
   @Transactional
   @PostMapping("/addCollection/{userId}/{messageId}")
-  public IsCollect addCollection(@PathVariable Integer userId, @PathVariable Integer messageId) {
+  public IsCollect addCollection(@PathVariable Long userId, @PathVariable Long messageId) {
     return new IsCollect().isTrue(userId, messageId, collectService, userService);
   }
 
@@ -77,7 +76,7 @@ public class AddCollectionController {
    * @return
    */
   @PostMapping("/addCollection/checkIsCollection/{userId}/{messageId}")
-  public Integer checkIsCollection(@PathVariable Integer userId, @PathVariable Integer messageId) {
+  public Integer checkIsCollection(@PathVariable Long userId, @PathVariable Long messageId) {
     Collect collect = new Collect();
     collect.setUserId(userId);
     collect.setMessageId(messageId);
@@ -92,7 +91,7 @@ public class AddCollectionController {
    */
   @Transactional
   @PostMapping("/deleteCollection/{userId}/{messageId}")
-  public Integer deleteCollection(@PathVariable Integer userId, @PathVariable Integer messageId) {
+  public Integer deleteCollection(@PathVariable Long userId, @PathVariable Long messageId) {
     Collect collect = new Collect();
     collect.setUserId(userId);
     collect.setMessageId(messageId);

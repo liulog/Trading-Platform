@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hust.trade.transaction.mapper.NoticeMapper">
   <resultMap id="BaseResultMap" type="com.hust.trade.transaction.model.Notice">
-    <id column="notice_id" jdbcType="INTEGER" property="noticeId" />
+    <id column="notice_id" jdbcType="BIGINT" property="noticeId" />
     <result column="notice_detail" jdbcType="VARCHAR" property="noticeDetail" />
   </resultMap>
   <sql id="Base_Column_List">

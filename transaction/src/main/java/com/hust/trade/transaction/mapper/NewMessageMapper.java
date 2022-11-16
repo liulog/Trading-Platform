@@ -8,6 +8,6 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface NewMessageMapper extends BaseMapper<NewMessage> {
-  List<NewMessage> getAllNewMessage(@Param("id") Integer userId);
-  NewMessage getLastNewMessage(@Param("id") Integer id);
+  List<NewMessage> getAllNewMessage(@Param("id") Long userId);
+  NewMessage getLastNewMessage(@Param("id") Long id);
 }

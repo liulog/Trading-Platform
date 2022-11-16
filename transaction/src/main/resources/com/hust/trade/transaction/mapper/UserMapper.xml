@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hust.trade.transaction.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.hust.trade.transaction.model.User">
-    <id column="user_id" jdbcType="INTEGER" property="userId"/>
+    <id column="user_id" jdbcType="BIGINT" property="userId"/>
     <result column="user_openid" jdbcType="VARCHAR" property="userOpenid"/>
     <result column="user_gender" jdbcType="INTEGER" property="userGender"/>
     <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar"/>

@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
  */
 public class Attend {
   @TableId("attend_id")
-  private Integer attendId;
+  private Long attendId;
 
   @TableField("user_id")
-  private Integer userId;
+  private Long userId;
 
   @TableField("message_id")
-  private Integer messageId;
+  private Long messageId;
 
 }

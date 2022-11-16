@@ -13,19 +13,23 @@ public class CollectService{
   @Autowired
   private CollectMapper collectMapper;
 
-  public List<Collect> getAllCollectionMessageByUserId(Integer userId) {
+  public List<Collect> getAllCollectionMessageByUserId(Long userId) {
     return collectMapper.getAllCollectionMessageByUserId(userId);
   }
 
+  //满足两个条件的查询，and
   public Integer findCount(Collect collect){
     QueryWrapper<Collect> query = new QueryWrapper<>();
-    query.eq("collect_id",collect.getCollectId());
+    query.eq("user_id",collect.getUserId()).eq("message_id",collect.getMessageId());
     //直接通过以上的两句代码实现条件查询计数，之后调用集成好的selectCount就ok了。
     return collectMapper.selectCount(query);
   }
 
+  //满足两个条件的才删除
   public void delete(Collect collect){
-    collectMapper.deleteById(collect.getCollectId());
+    QueryWrapper<Collect> query = new QueryWrapper<>();
+    query.eq("user_id",collect.getUserId()).or().eq("message_id",collect.getMessageId());
+    collectMapper.delete(query);
   }
 
   public void add(Collect collect){

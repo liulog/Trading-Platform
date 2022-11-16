@@ -18,22 +18,22 @@ import lombok.NoArgsConstructor;
 public class CommentReply {
 
   @TableId("comment_reply_id")
-  private Integer commentReplyId;
+  private Long commentReplyId;
 
   @TableField("comment_id")
-  private Integer commentId;
+  private Long commentId;
 
   @TableField("comment_user_id")
-  private Integer commentUserId;
+  private Long commentUserId;
 
   @TableField("reply_user_id")
-  private Integer replyUserId;
+  private Long replyUserId;
 
   @TableField("reply_name")
   private String replyUserName;
 
   @TableField("receive_user_id")
-  private Integer receiveUserId;
+  private Long receiveUserId;
 
   @TableField("receive_user_name")
   private String receiveUserName;

@@ -13,13 +13,14 @@ public class AttendService {
   @Autowired
   private AttendMapper attendMapper;
 
-  public List<Attend> getAllAttendMessageByUserId(Integer id) {
+  public List<Attend> getAllAttendMessageByUserId(Long id) {
     return attendMapper.getAllAttendMessageByUserId(id);
   }
 
+  //根据两个条件查询
   public Integer findCount(Attend attend){
     QueryWrapper<Attend> query = new QueryWrapper<>();
-    query.eq("attend_id",attend.getAttendId());
+    query.eq("user_id",attend.getUserId()).eq("message_id",attend.getMessageId());
     //直接通过以上的两句代码实现条件查询计数，之后调用集成好的selectCount就ok了。
     return attendMapper.selectCount(query);
   }
@@ -28,7 +29,9 @@ public class AttendService {
     attendMapper.insert(attend);
   }
   public void delete(Attend attend){
-    attendMapper.deleteById(attend.getAttendId());
+    QueryWrapper<Attend> query = new QueryWrapper<>();
+    query.eq("message_id",attend.getMessageId());
+    attendMapper.delete(query);
   }
 
 }

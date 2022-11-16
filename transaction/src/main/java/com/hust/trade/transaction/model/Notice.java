@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Notice {
 
   @TableId("notice_id")
-  private Integer noticeId;
+  private Long noticeId;
 
   @TableField("notice_detail")
   private String noticeDetail;

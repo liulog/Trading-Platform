@@ -22,14 +22,14 @@ public class AddMessageDetailController {
   private UserService userService;
 
   /**
-   * 上传message信息
+   * 发布message信息
    * @param userId 用户唯一标识
-   * @param message 修改的信息
+   * @param message "发布" 上传的信息（图片url等）
    * @return
    */
   @Transactional
   @PostMapping("/addMessage/{userId}")
-  public IsUpload addMessage(@PathVariable Integer userId, @RequestBody Message message) {
+  public IsUpload addMessage(@PathVariable Long userId, @RequestBody Message message) {
     return new IsUpload().isTrue(message, messageDetailService, messageImagesService, userService);
   }
 }

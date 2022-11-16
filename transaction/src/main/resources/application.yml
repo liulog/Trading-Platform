@@ -13,22 +13,20 @@ spring:
   main:
     allow-circular-references: true
 
-# 日志
-logging:
-  level:
-    root: info
-
 mybatis-plus:
   mapper-locations: classpath:com/hust/trade/transaction/mapper/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  global-config:
-    banner: false
   type-aliases-package: com.hust.trade.transaction.model
 
+spring.jackson.date-format: yyyy-MM-dd HH:mm
+
+#这个是时区，一定要加，否则会默认为格林尼治时间，即少8小时
+spring.jackson.time-zone: GMT+8
+
 # 分页相关配置
-#pagehelper:
-#  helperDialect: mysql
-#  reasonable: true
-#  supportMethodsArguments: true
-#  params: count=countSql
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

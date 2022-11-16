@@ -9,6 +9,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface AttendMapper extends BaseMapper<Attend> {
 
-  List<Attend> getAllAttendMessageByUserId(@Param("id") Integer id);
+  List<Attend> getAllAttendMessageByUserId(@Param("id") Long id);
 
 }
