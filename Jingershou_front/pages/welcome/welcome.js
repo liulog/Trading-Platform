@@ -38,7 +38,7 @@ Page({
         return
       }
       wx.switchTab({
-        url: '../index/index',
+        url: '../me/me',
       })
     }
     setTimeout(function() {
@@ -61,7 +61,7 @@ Page({
     }
     clearInterval(this.onLoad());
     wx.switchTab({
-      url: '/pages/index/index',
+      url: '/pages/me/me',
     })
   },
   /**
@@ -72,6 +72,5 @@ Page({
       title: "鲸二手，便利你的生活",
       imageUrl: "../../images/other/logo.png"
     }
-
   }
 })

@@ -1,28 +1,20 @@
 {
   "pages": [
     "pages/welcome/welcome",
+    "pages/me/me",
     "pages/index/index",
-    "pages/zhuce/zhuce",
     "pages/search/search",
     "pages/agreement/agreement",
     "pages/add/add",
     "pages/message_detail/message_detail",
     "pages/category/category",
     "pages/add_detail/add_detail",
-    "pages/shop/shop",
-    "pages/shop_detail/shop_detail",
-    "pages/me/me",
     "pages/me_fabu/me_fabu",
     "pages/me_canyu/me_canyu",
     "pages/me_shoucang/me_shoucang",
     "pages/me_xiaoxi/me_xiaoxi",
     "pages/me_about/me_about"
   ],
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于天气预报,请给予权限噢"
-    }
-  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -45,12 +37,6 @@
         "selectedIconPath": "/images/tabBar/tianjia_active.png"
       },
       {
-        "pagePath": "pages/shop/shop",
-        "text": "消息",
-        "iconPath": "/images/tabBar/shangpin.png",
-        "selectedIconPath": "/images/tabBar/shangpin_active.png"
-      },
-      {
         "pagePath": "pages/me/me",
         "text": "我的",
         "iconPath": "/images/tabBar/wode.png",
@@ -58,8 +44,6 @@
       }
     ]
   },
-  "requiredBackgroundModes": [
-    "audio"
-  ],
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents" 
 }

@@ -4,7 +4,7 @@ const app = getApp()
 var bmap = require('../../utils/bmap-wx.min.js');
 Page({
   data: {
-    imageUrl:"",
+    imageUrl:"https://tradeplatform1.oss-cn-hangzhou.aliyuncs.com/",    //放置自己的oss服务器地址
     // 此页面 页面内容距最顶部的距离
     height: app.globalData.height * 2 + 20,
     currentIndex: 0,
@@ -45,24 +45,13 @@ Page({
       success: function(e) {
         if (e.confirm) {
           wx.makePhoneCall({
-            phoneNumber: '18996379281',
+            phoneNumber: '15671569229',
           })
         }
       }
     })
   },
-  //查看失物招领详情
 
-  //商家查看
-
-  //查看最新的失物招领
-  
-  //点击查看图片
-  
-  //查看公告
-  
-  //授权天气
- 
   onPageScroll: function(e) { //判断滚轮位置
     if (e.scrollTop > 200) {
       this.setData({
@@ -99,41 +88,10 @@ Page({
     })
   },
 
-  getWeather() {
-    var that = this;
-    // 新建百度地图对象 
-    var BMap = new bmap.BMapWX({
-      ak: '1yb9NASdSjEYoxhTj59uD1qdyCHgKE6U'
-    });
-    var fail = function(data) {
-
-    };
-    var success = function(data) {
-      var weatherData = data.currentWeather[0];
-      that.setData({
-        weatherData: weatherData
-      });
-
-    }
-    // 发起weather请求 
-    BMap.weather({
-      fail: fail,
-      success: success
-    });
-  },
-
   onLoad: function(options) {
 
     let that = this
-    this.getWeather();
-    /**
-     * 商家服务
-     */
-    this.setData({
-      takeout: getApp().globalData.shopMessage,
-      imageUrl:getApp().globalData.imageUrl,
-    })
-
+    
     /**
      * 轮播图
      */
@@ -205,6 +163,7 @@ Page({
       url: getApp().globalData.url + '/getMessage/getAllMessageDetail/' + index,
       method: "POST",
       success: (res) => {
+        console.log(res.data)
         if (res.data == 200) {
           that.setData({
             isLastPage: true
@@ -214,8 +173,6 @@ Page({
         that.setData({
           user_message: that.data.user_message.concat(res.data)
         })
-
-
       },
       complete: function(res) {
         wx.hideLoading();
@@ -238,10 +195,6 @@ Page({
           key: 'lastNewMessage',
           success: function(res) {
             if (res.data != e.data.newMessageId) {
-              wx.playBackgroundAudio({
-                dataUrl: 'http://downsc.chinaz.net/Files/DownLoad/sound1/201609/7824.wav',
-                title: '提示',
-              })
               wx.showModal({
                 title: '新消息',
                 content: '内容：' + e.data.newMessageDetail,
@@ -258,7 +211,6 @@ Page({
             }
           },
         })
-
         wx.setStorage({
           key: 'lastNewMessage',
           data: e.data.newMessageId,

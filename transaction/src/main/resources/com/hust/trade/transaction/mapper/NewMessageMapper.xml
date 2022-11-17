@@ -15,11 +15,11 @@
   </sql>
 
   <select id="getAllNewMessage" resultMap="BaseResultMap">
-    SELECT * FROM new_message WHERE user_id=#{id} ORDER by new_message_id desc
+    SELECT <include refid="Base_Column_List"/>  FROM new_message WHERE user_id=#{id} ORDER by new_message_id desc
   </select>
 
   <select id="getLastNewMessage" resultMap="BaseResultMap">
-    SELECT * FROM new_message WHERE user_id=#{id} ORDER by new_message_id desc limit 1
+    SELECT <include refid="Base_Column_List"/>  FROM new_message WHERE user_id=#{id} ORDER by new_message_id desc limit 1
   </select>
 
 </mapper>

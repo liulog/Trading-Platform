@@ -1,24 +1,23 @@
 //app.js
 App({
-
   globalData: {
     share: false, // 分享默认为false
     height: 0,
-    url: "这里是你的后台tomcat或者公网地址，地址最后面不加斜杠",
-    imageUrl: "https://*.oss-cn-huhehaote.aliyuncs.com/",//这是你的oss地址,用来展示图片,后面加斜杠
-    userId: -1,
+    url: "https://ljy.elcfin.cn",         //域名访问
+    // url: "http://47.99.50.81:80",    //ip访问
+    // url: "http://localhost:8080",      //本地调试用
+    imageUrl: "https://tradeplatform1.oss-cn-hangzhou.aliyuncs.com/",//oss地址,用来展示图片,后面加斜杠
+    userId: "-1",
     userInfo: {},
-    userIsAdmin: -1,
-    shopMessage: [],
+    userIsAdmin: "-1",
     swiperImages: [],
     categoryMessage: [],
     noticeMessage: [],
     messageDetail: [],
     isUpdate: -1,
-
   },
-  onLaunch: function (options) {
 
+  onLaunch: function (options) {
     wx.showLoading({
       title: '努力加载中~',
     })
@@ -58,44 +57,9 @@ App({
         getApp().globalData.userIsAdmin = res.data
       },
     })
-    /**
-     * 获取商店
-     */
-    wx.getStorage({
-      key: 'shopMessage',
-      success: function (res) {
-        that.globalData.shopMessage = res.data
-        if (that.globalData.shopMessage.length != res.data.length) {
-          wx.request({
-            url: that.globalData.url + '/getMessage/getAllShop',
-            method: "post",
-            success: function (e) {
-              that.globalData.shopMessage = e.data
-              wx.setStorage({
-                key: 'shopMessage',
-                data: e.data,
-              })
-            }
-          })
-        }
-      },
-      fail: function () {
-        wx.request({
-          url: that.globalData.url + '/getMessage/getAllShop',
-          method: "post",
-          success: function (e) {
-            that.globalData.shopMessage = e.data
-            wx.setStorage({
-              key: 'shopMessage',
-              data: e.data,
-            })
-          }
-        })
-      }
-    })
 
     /**
-     * 获取轮播图
+     * 获取轮播图（完成）
      */
     wx.request({
       url: that.globalData.url + '/getMessage/getAllSwiperMessage',
@@ -108,7 +72,6 @@ App({
     /**
      * 获取分类
      */
-
     wx.getStorage({
       key: 'categoryMessage',
       success: function (res) {
@@ -150,8 +113,9 @@ App({
         that.globalData.messageDetail = e.data
       }
     })
+
     /**
-     * 获取最新失物招领
+     * 获取最新（获取数码区消息），因为用的原来的服务，所以是lostmessage（失物招领），没有做修改
      */
     wx.request({
       url: that.globalData.url + '/getMessage/getLostMessage',
@@ -162,6 +126,5 @@ App({
     })
     wx.hideLoading()
   },
-
 
 })

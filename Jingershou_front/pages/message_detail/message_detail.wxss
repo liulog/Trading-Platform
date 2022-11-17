@@ -57,6 +57,7 @@ button {
 }
 
 .user_image image {
+  height: 100rpx;
   width: 100rpx;
   border-radius: 50%;
 }
@@ -96,6 +97,7 @@ button {
 }
 
 .user_message image {
+  height: 100rpx;
   width: 100rpx;
   border-radius: 50%;
 }
@@ -122,9 +124,11 @@ button {
 }
 
 .main_middle_image image {
-  margin-top: 10rpx;
-  width: 100%;
-  border-radius: 10rpx;
+    display: inline-block;
+    width: 235rpx;
+    height: 235rpx;
+    margin: 5rpx;
+    border-radius: 10rpx;
 }
 
 .main_bottom_operation {

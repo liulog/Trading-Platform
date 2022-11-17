@@ -158,7 +158,7 @@ page {
 }
 
 .ad {
-  height: 150rpx;
+  height: 220rpx;
 }
 
 .ad image {
@@ -311,7 +311,7 @@ button {
   width: 33%;
   padding: 10rpx;
   font-weight: 600;
-  color: #999;
+  color: #999999;
 }
 
 .main {
@@ -324,6 +324,7 @@ button {
 }
 
 .user_image image {
+  height: 100rpx;
   width: 100rpx;
   border-radius: 50%;
 }

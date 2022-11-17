@@ -10,7 +10,7 @@
 }
 
 .tit_seabox {
-  width: calc(100% - 64rpx);
+  width: calc( 100% - 64rpx );
   background: #fff;
   height: 30px;
   padding: 10px 16px;

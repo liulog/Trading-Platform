@@ -1,6 +1,7 @@
 package com.hust.trade.transaction.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hust.trade.transaction.mapper.UserMapper;
 import com.hust.trade.transaction.model.User;
 import java.util.List;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UserService extends ServiceImpl<UserMapper, User> implements IUserService {
 
   @Autowired
   private UserMapper userMapper;
@@ -20,7 +21,7 @@ public class UserService {
    * @return
    */
   public Integer insertUserMessage(User user){
-    return userMapper.insertUserMessage(user);
+    return userMapper.insert(user);
   }
 
   public void updateUserMessage(User user){

@@ -18,27 +18,29 @@
       <view class="main_item">
         <view class="user_message">
           <view class="user_image" bindtap="admin">
-            <image src="{{messageDetail.userIdAnonymity==0?messageDetail.mangoUser.userAvatar:'../../images/other/hidden.jpg'}}" mode="widthFix" />
+            <image src="{{messageDetail.userIdAnonymity==0?messageDetail.user.userAvatar:'../../images/other/hidden.jpg'}}" mode="widthFix" />
           </view>
           <view class="user_detail">
             <view class="user_name">
-              <text>{{messageDetail.userIdAnonymity==0?messageDetail.mangoUser.userNickname:"匿名用户"}}</text>
+              <text>{{messageDetail.userIdAnonymity==0?messageDetail.user.userNickname:"匿名用户"}}</text>
               <view>
                 <button bindtap="delete_message" style="font-size:28rpx;color:red;display:{{userIsAdmin==2?'block':messageDetail.userId==userId?'block':'none'}}">删除该文章</button>
               </view>
             </view>
             <view class="user_flag">
-              <view>{{messageDetail.messageCreatTime}} 发布 </view>
+              <view>{{messageDetail.messageCreateTime}} 发布 </view>
             </view>
           </view>
         </view>
       </view>
+
+
       <view class="main_middle">
         <view class="main_middle_intro">
           <text selectable>{{messageDetail.messageDetail}}</text>
         </view>
         <view class="main_middle_image">
-          <block wx:for="{{messageDetail.messageImages}}" wx:key="{{index}}">
+          <block wx:for="{{messageDetail.messageImages}}" wx:key="index">
             <image bindtap="look_image" id="{{imageUrl}}{{item.imageUrl}}" src="{{imageUrl}}{{item.imageUrl}}" mode="widthFix" />
           </block>
         </view>
@@ -58,54 +60,49 @@
       <view class="divide"></view>
       <view class="liuyan">
 
-        <block wx:for="{{messageDetail.comments}}" wx:key="{{index}}">
+        <block wx:for="{{messageDetail.comments}}" wx:key="index">
           <view class="liuyan_item">
             <view class="user_message">
               <view class="user_image">
-                <image src="{{item.mangoUser.userAvatar}}" mode="widthFix" />
+                <image src="{{item.user.userAvatar}}" mode="widthFix" />
               </view>
               <view class="user_detail">
                 <view class="user_name">
-                  <text>{{item.mangoUser.userNickname}}</text>
+                  <text>{{item.user.userNickname}}</text>
                   <view>
                     <button bindtap="delete_comment" id="{{item.commentId}}" style="font-size:28rpx;color:red;display:{{userIsAdmin==2?'block':item.userId==userId?'block':'none'}}">删除</button>
                   </view>
                 </view>
                 <view class="user_flag">
-                  <view>{{item.commentCreatTime}}</view>
+                  <view>{{item.commentCreateTime}}</view>
                 </view>
               </view>
             </view>
             <view class="liuyan_intro" data-name="{{item.mangoUser.userNickname}}" data-commentId="{{item.commentId}}" id="{{item.userId}}" bindtap="toggleDialog2">
               {{item.commentDetail}}
             </view>
-            <view class="have_message">
-              <block wx:for="{{item.commentReplies}}" wx:for-item="replay" wx:key="{{index}}">
-                <view class="have_message_item">
 
+            <view class="have_message">
+              <block wx:for="{{item.commentReplies}}" wx:for-item="reply" wx:key="index">
+                <view class="have_message_item">
                   <view class="test">
-                    <view class="have_message_user">{{replay.replayUserName}}
-                      <text decode="{{true}}" style="color:#999;display:{{(item.userId==replay.receiveUserId)?'none':'inline'}}">&nbsp;回复&nbsp;</text>{{(item.userId==replay.receiveUserId)?"":(replay.receiveUserName)}}
+                    <view class="have_message_user">{{reply.replyUserName}}
+                      <text decode="{{true}}" style="color:#999;display:{{(item.userId==reply.receiveUserId)?'none':'inline'}}">&nbsp;回复&nbsp;</text>{{(item.userId==reply.receiveUserId)?"":(reply.receiveUserName)}}
                     </view>
                     <view style="color:red">
-                      <button bindtap="delete_comment_reply" id="{{replay.commentReplyId}}" style="font-size:28rpx;color:red;display:{{userIsAdmin==2?'block':replay.replayUserId==userId?'block':'none'}}">删除</button>
+                      <button bindtap="delete_comment_reply" id="{{reply.commentReplyId}}" style="font-size:28rpx;color:red;display:{{userIsAdmin==2?'block':reply.replyUserId==userId?'block':'none'}}">删除</button>
                     </view>
                   </view>
-                  <view class="have_message_intro" style="word-wrap:break-word;" bindtap="toggleDialog3" data-commentId="{{item.commentId}}" data-name="{{replay.replayUserName}}" id="{{replay.replayUserId}}">{{replay.replyDetail}}</view>
+                  <view class="have_message_intro" style="word-wrap:break-word;" bindtap="toggleDialog3" data-commentId="{{item.commentId}}" data-name="{{reply.replyUserName}}" id="{{reply.replyUserId}}">{{reply.replyDetail}}</view>
                 </view>
               </block>
             </view>
           </view>
           <view class="divide" style="margin-left: 120rpx;"></view>
         </block>
-
       </view>
-
-
     </view>
   </view>
-
-
 
   <view class="end" style="text-align:center;color:#999;font-size:25rpx;margin:10rpx;margin-top:20rpx;height:150rpx;">
     ————————— End —————————

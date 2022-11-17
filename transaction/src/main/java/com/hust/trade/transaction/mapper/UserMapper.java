@@ -9,5 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
 // TODO 添加@Mapper 把UserMapper交给spring来管理
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
-  Integer insertUserMessage(User user);
+
 }

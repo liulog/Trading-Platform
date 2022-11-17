@@ -197,7 +197,6 @@ Page({
             )
             images_url.push(path);
 
-
             that.setData({
                 result_image_url: images_url
             })
@@ -221,10 +220,7 @@ Page({
     },
     submit() {
 
-
         var that = this;
-
-
 
         if (that.trim(that.data.input_intro) == "" || that.trim(that.data.input_intro) < 2) {
             wx.showModal({
@@ -279,7 +275,6 @@ Page({
 
                     that.img_upload();
 
-
                     let list = {
                         "categoryId": new Number(that.data.category_index) + 1,
                         "userPhone": that.data.input_phone,
@@ -311,7 +306,8 @@ Page({
                                 })
                                 return;
                             }
-
+                            console.log("user-id"+that.data.userId)
+                            console.log("-----------发布成功"+e.data.code)
                             if (e.data.code == 200) {
                                 wx.showModal({
                                     title: '提示',

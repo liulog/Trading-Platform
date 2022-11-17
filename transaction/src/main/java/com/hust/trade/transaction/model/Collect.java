@@ -1,5 +1,6 @@
 package com.hust.trade.transaction.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
   我的收藏：收藏id，用户id，消息id
  */
 public class Collect {
-  @TableId("collect_id")
+  @TableId(value = "collect_id",type = IdType.ASSIGN_ID)
   private Long collectId;
 
   @TableField("user_id")

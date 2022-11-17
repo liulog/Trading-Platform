@@ -1,5 +1,6 @@
 package com.hust.trade.transaction.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
  */
 public class Comment {
 
-  @TableId("comment_id")
+  @TableId(value = "comment_id",type = IdType.ASSIGN_ID)
   private Long commentId;
 
   @TableField("user_id")
@@ -33,7 +34,9 @@ public class Comment {
   @TableField("comment_create_time")
   private Date commentCreateTime;
 
+  @TableField(exist = false)
   private User User;
 
+  @TableField(exist = false)
   private List<CommentReply> commentReplies;
 }

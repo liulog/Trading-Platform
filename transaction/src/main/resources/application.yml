@@ -1,6 +1,10 @@
-# 服务端口配置
+# 服务端口配置: https配置
 server:
-  port: 8080
+  port: 443
+  ssl:
+    key-store: classpath:8830354_ljy.elcfin.cn.pfx
+    key-store-type: PKCS12
+    key-store-password: dc8O5PfT
 
 # 设置数据源
 spring:
@@ -12,6 +16,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
   main:
     allow-circular-references: true
+  jackson:
+    generator:
+      write-numbers-as-strings: true
 
 mybatis-plus:
   mapper-locations: classpath:com/hust/trade/transaction/mapper/*.xml

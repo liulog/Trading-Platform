@@ -18,8 +18,8 @@ public class MessageDetailService {
     return messageMapper.getLostMessage();
   }
 
-  public Integer insertMessageDetail(Message message) {
-    return messageMapper.insertMessageDetail(message);
+  public void insertMessageDetail(Message message) {
+    messageMapper.insert(message);
   }
 
   public List<Message> getAllMessage() {

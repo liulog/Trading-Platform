@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "nav-bar": "/components/navbar/index",
-    "search": "/components/search/index"
+    "nav-bar": "../../components/navbar/index",
+    "search": "../../components/search/index"
   }
 }

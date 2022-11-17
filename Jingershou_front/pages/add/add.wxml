@@ -1,7 +1,15 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class='container' style='margin-top: {{height*2+20}}px'>
   <view class="tips">
-    <text selectable="{{true}}">免责声明：平台发布的所有信息仅负责展示，与平台本身无关，平台不负任何责任。</text>
+    <text selectable="{{true}}">
+        1.对于对于闲置交易，禁止发布任何非个人商品，对于发布的闲置交易，平台不保证物品信息的正确，请联系卖家当面交易，如遇到虚假信息，请及时反馈。
+        2.对于所有发布信息，请发布健康内容；评论留言区禁止发布商品售卖、广告等无意义内容；如有违规，平台有权删除，屡次违规者，平台将禁止其使用。
+        3.平台免费使用，禁止发布任何推广内容，如需首页展示，请联系管理员。
+        4.平台仅负责展示发布信息，具体内容与平台无关，平台不负任何责任，请注意保护隐私。
+    </text>
+    <text selectable="{{true}}">
+    免责声明：平台发布的所有信息仅负责展示，与平台本身无关，平台不负任何责任。
+    </text>
   </view>
   <view class="yveding">
     <checkbox bindtap="look_agreement">同意</checkbox>

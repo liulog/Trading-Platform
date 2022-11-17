@@ -10,12 +10,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class TransactionApplicationTests {
-//
-//  @Autowired
-//  private UserMapper userMapper;
-//
-//  @Test
-//  void testGetAll(){
+
+
+  @Autowired
+  private UserMapper userMapper;
+
+  @Test
+  void testGetAll(){
+    User user=new User();
+    user.setUserOpenid("11");
+    user.setUserAvatar("aaa");
+    user.setUserGender(1);
+    user.setUserNickname("1111");
+//    System.out.println(user.getUserId());
+//    userMapper.insertUserMessage(user);
+//    userMapper.insert(user);
+//    System.out.println(user.getUserId());
 //    LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper();
 ////    wrapper.lt("user_id",2);
 ////    wrapper.lambda().lt(User::getUserId,3);
@@ -23,7 +33,7 @@ class TransactionApplicationTests {
 //    wrapper.gt(User::getUserId,2);
 //    List<User> userList = userMapper.selectList(wrapper);
 //    System.out.println(userList);
-//  }
+  }
 //
 //  @Test
 //  void testSave(){

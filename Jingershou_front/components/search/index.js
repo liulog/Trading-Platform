@@ -1,4 +1,3 @@
-
 // 本组件为搜索组件
 // 需要传入addflag   值为true / false （搜索框右侧部分）
 // 若显示搜索框右侧部分   需传入右侧图标url以及addhandle函数
@@ -6,7 +5,6 @@
 Component({
 
   properties: {
-
     addflag: {    //显示搜索框右侧部分
       type: Boolean,
       value: false,
@@ -33,12 +31,11 @@ Component({
    * 组件的初始数据
    */
   data: {
-    // searchflag: false,   //搜索框 取消按钮显示与隐藏
+    searchflag: false,   //搜索框 取消按钮显示与隐藏
   },
 
   /**
    * 组件的方法列表
-
    */
   methods: {
 

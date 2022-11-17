@@ -64,7 +64,7 @@ Page({
   checkAdmin() {
     let that = this
     wx.request({
-      url: getApp().globalData.url + '/checkAdmin?id=' + new Number(that.data.userId),
+      url: getApp().globalData.url + '/checkAdmin?id=' + that.data.userId,
       method: "post",
       success: function(res) {
         if (res.data[0].userIsAdmin != 2) {
@@ -98,13 +98,15 @@ Page({
       "province": e.detail.userInfo.province,
       "country": e.detail.userInfo.country,
       "avatarUrl": e.detail.userInfo.avatarUrl
-    }
+    }   
+    console.log(list.nickName)
 
     var listMessage = {
       "userAvatar": e.detail.userInfo.avatarUrl,
       "userNickname": e.detail.userInfo.nickName,
       "userGender": e.detail.userInfo.gender,
     }
+    console.log(list,listMessage)
     wx.login({
       success: function(res) {
         wx.showLoading({
@@ -113,6 +115,7 @@ Page({
         // console.log(that.data.openid)
         // 获取登录的临时凭证
         var code = res.code;
+        console.log(code)
         // 调用后端，获取微信的session_key, secret
         wx.request({
           url: getApp().globalData.url + "/Login?code=" + code,
@@ -146,7 +149,7 @@ Page({
 
             getApp().globalData.userInfo = list
 
-
+            console.log("message.code===="+that.data.message.code)
             if (that.data.message.code === 200) {
               wx.showModal({
                 title: '提示',
@@ -176,19 +179,6 @@ Page({
     }, 500)
   },
 
-  attention() {
-    wx.showModal({
-      title: '提示',
-      content: '公众号名称  芒果微校园',
-      confirmText: "复制",
-      showCancel: false,
-      success: function() {
-        wx.setClipboardData({
-          data: '芒果微校园',
-        })
-      }
-    })
-  },
   call() {
     wx.showModal({
       title: '提示',
@@ -201,11 +191,11 @@ Page({
         if (e.confirm) {
           wx.showModal({
             title: '提示',
-            content: '是否联系(18996379281)',
+            content: '是否联系(15671569229)',
             success: function(e) {
               if (e.confirm) {
                 wx.makePhoneCall({
-                  phoneNumber: '18996379281',
+                  phoneNumber: '15671569229',
                 })
               }
             }
@@ -213,12 +203,12 @@ Page({
         } else {
           wx.showModal({
             title: '提示',
-            content: '微信号：18996379281',
+            content: '微信号：15671569229',
             confirmText: "复制",
             success: function(e) {
               if (e.confirm) {
                 wx.setClipboardData({
-                  data: '18996379281',
+                  data: '15671569229',
                 })
               }
             }

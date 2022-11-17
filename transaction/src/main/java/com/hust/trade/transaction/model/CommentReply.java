@@ -1,5 +1,6 @@
 package com.hust.trade.transaction.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
  */
 public class CommentReply {
 
-  @TableId("comment_reply_id")
+  @TableId(value = "comment_reply_id",type = IdType.ASSIGN_ID)
   private Long commentReplyId;
 
   @TableField("comment_id")
@@ -29,7 +30,7 @@ public class CommentReply {
   @TableField("reply_user_id")
   private Long replyUserId;
 
-  @TableField("reply_name")
+  @TableField("reply_user_name")
   private String replyUserName;
 
   @TableField("receive_user_id")

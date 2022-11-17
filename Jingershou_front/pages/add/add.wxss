@@ -5,11 +5,12 @@
 }
 
 .tips {
+
   background-color: wheat;
-  padding: 20rpx;
+  padding: 40rpx;
   margin: 60rpx;
-  color: #999;
-  font-size: 25rpx;
+  color: gray;
+  font-size: 30rpx;
 }
 
 .yveding {

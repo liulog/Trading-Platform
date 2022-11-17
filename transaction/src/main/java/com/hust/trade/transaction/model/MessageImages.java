@@ -1,5 +1,6 @@
 package com.hust.trade.transaction.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,8 +16,7 @@ import lombok.NoArgsConstructor;
   发布图片，图片id，发布id，图片url
  */
 public class MessageImages {
-
-  @TableId("image_id")
+  @TableId(value = "image_id",type = IdType.ASSIGN_ID)
   private Long imageId;
 
   @TableField("message_id")

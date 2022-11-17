@@ -1,5 +1,6 @@
 package com.hust.trade.transaction.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -12,10 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName("user")
-
 public class User {
 
-  @TableId("user_id")
+  @TableId(value = "user_id",type = IdType.ASSIGN_ID)
   private Long userId;
 
   @TableField("user_openid")

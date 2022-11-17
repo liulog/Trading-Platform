@@ -63,8 +63,6 @@ Page({
     })
   },
   onLoad(options) {
-
-
     this.setData({
       allCategoryMessage: getApp().globalData.categoryMessage,
       imageUrl:getApp().globalData.imageUrl,
@@ -108,8 +106,6 @@ Page({
             isLoading: true
           })
         }, 300)
-
-
       },
     })
   },

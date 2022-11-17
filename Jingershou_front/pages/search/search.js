@@ -10,6 +10,7 @@ Page({
       title: '搜索', //导航栏 中间的标题
       height: 0
     },
+
     imageUrl:"",
     allCategoryMessage: [],
     search: "",
@@ -20,6 +21,7 @@ Page({
     user_message: [],
     height: app.globalData.height * 2 + 20,
   },
+
   searchList: function(e) {
     let value = e.detail.detail.value;
     this.setData({
@@ -40,7 +42,6 @@ Page({
       user_message: []
     })
     this.loadMessage(that.data.search, 1)
-
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -55,6 +56,8 @@ Page({
 
   loadMessage(keyword, index) {
     let that = this;
+    if(!that.data.search)
+      return;
     wx.request({
       url: getApp().globalData.url + '/searchByKeyword/' + that.data.search + '/' + index,
       method: "post",

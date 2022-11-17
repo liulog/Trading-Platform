@@ -17,39 +17,32 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    message_id, user_id_anonymity, user_id, category_id, user_phone, user_major, user_level, message_detail, message_share, message_comment, message_watch, message_creat_time
+    message_id, user_id_anonymity, user_id, category_id, user_phone, user_major, user_level, message_detail, message_share, message_comment, message_watch, message_create_time
   </sql>
 
   <select id="getLostMessage" resultMap="BaseResultMap">
-    SELECT * FROM message WHERE category_id=1 ORDER BY message_create_time desc limit 1
+    SELECT <include refid="Base_Column_List"/>  FROM message WHERE category_id=1 ORDER BY message_create_time desc limit 1
   </select>
 
-  <insert id="insertMessageDetail">
-    <selectKey resultType="Integer" keyProperty="messageId">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    INSERT INTO message(user_id_anonymity, user_id, category_id, user_phone, user_major, user_level, message_detail)
-    VALUES (#{userIdAnonymity}, #{userId}, #{categoryId}, #{userPhone}, #{userMajor}, #{userLevel}, #{messageDetail})
-  </insert>
 
   <select id="getAllMessage" resultMap="BaseResultMap">
-    SELECT * FROM message ORDER BY message_create_time desc
+    SELECT <include refid="Base_Column_List"/>  FROM message ORDER BY message_create_time desc
   </select>
 
   <select id="getMessageByCategoryId" resultMap="BaseResultMap">
-    SELECT * FROM message WHERE category_id=#{id} ORDER BY message_create_time desc
+    SELECT <include refid="Base_Column_List"/>  FROM message WHERE category_id=#{id} ORDER BY message_create_time desc
   </select>
 
   <select id="getMessageByCategoryAndKeyword" resultMap="BaseResultMap">
-    SELECT * FROM message WHERE category_id=#{id}  AND  ( message_detail  LIKE BINARY CONCAT('%',('${keyword}'),'%') ) order by message_create_time DESC
+    SELECT <include refid="Base_Column_List"/>  FROM message WHERE category_id=#{id}  AND  ( message_detail  LIKE BINARY CONCAT('%',('${keyword}'),'%') ) order by message_create_time DESC
   </select>
 
   <select id="getMessageDetailByUserId" resultMap="BaseResultMap">
-    SELECT * FROM message WHERE user_id=#{id} ORDER BY message_create_time desc
+    SELECT <include refid="Base_Column_List"/>  FROM message WHERE user_id=#{id} ORDER BY message_create_time desc
   </select>
 
   <select id="getMessageByKeyword" resultMap="BaseResultMap">
-    SELECT * FROM message WHERE ( message_detail  LIKE BINARY CONCAT('%',('${keyword}'),'%') ) order by message_create_time DESC
+    SELECT <include refid="Base_Column_List"/>  FROM message WHERE ( message_detail  LIKE BINARY CONCAT('%',('${keyword}'),'%') ) order by message_create_time DESC
   </select>
 
 

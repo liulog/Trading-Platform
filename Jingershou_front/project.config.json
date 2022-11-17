@@ -27,9 +27,9 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "2.25.3",
+  "libVersion": "2.8.0",
   "appid": "wx7998b30adc2c9ed5",
-  "projectname": "%E8%8A%92%E6%9E%9CNew%20Life",
+  "projectname": "jingershou",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {

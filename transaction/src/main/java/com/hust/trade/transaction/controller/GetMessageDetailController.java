@@ -77,6 +77,7 @@ public class GetMessageDetailController {
       return list1;
     }
     List<Message> allMessage = pageInfo.getList();
+    System.out.println(allMessage.toString());
     return getImage(allMessage, userService, messageImagesService);
   }
 

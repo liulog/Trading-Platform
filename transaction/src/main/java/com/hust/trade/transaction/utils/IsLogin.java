@@ -29,15 +29,22 @@ public class IsLogin {
     IsLogin isLogin = new IsLogin();
     isLogin.setCode(500);
     List<User> userMessageByOtherMessage = userService.getUserMessageByOtherMessage(user1);
-
+    System.out.println(userMessageByOtherMessage.toString());
     try {
       if (userMessageByOtherMessage.size() == 1) {  //根据openid查到了对应的用户
         userService.updateUserMessage(user);
         isLogin.setCode(200);//老用户
+        System.out.println("老用户");
         isLogin.setUserId(userMessageByOtherMessage.get(0).getUserId());  //用户id
       } else {
+        System.out.println("新用户");
         userService.insertUserMessage(user);      //没有查到对应的用户
+        System.out.println("0000-----------");
+//        user=userService.getUserMessageByOtherMessage(user).get(0);
+//        System.out.println("11111---------");
         isLogin.setUserId(user.getUserId());
+        System.out.println(user.getUserId());
+        System.out.println(isLogin.userId);
         isLogin.setCode(300);//新用户
       }
     } catch (Exception e) {                       //出现了错误

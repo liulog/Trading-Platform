@@ -7,9 +7,7 @@
       <view class="pulse-bubble pulse-bubble-3"></view>
     </view>
   </view>
-
 </view>
-
 
 <view style="display:{{isLoading?'block':'none'}}">
 
@@ -58,16 +56,6 @@
       </navigator>
     </view>
     <view class="me_operation">
-      <view bindtap="attention">
-        <text class="iconfont icon-follow"></text>
-        <text style="margin-left:10rpx;">关注我们</text>
-      </view>
-      <view>
-        <text class="iconfont icon-kefu"></text>
-        <button open-type="contact">我的客服</button>
-      </view>
-    </view>
-    <view class="me_operation">
       <navigator url="/pages/agreement/agreement">
         <view>
           <text class="iconfont icon-yueding"></text>
@@ -92,7 +80,7 @@
       <text style="margin-left:10rpx;">权限检测</text>
     </view>
   </view>
-  <view style="text-align:center;color:#999;padding:20rpx;font-size:28rpx;">Ver 2.0.7</view>
+  <view style="text-align:center;color:#999;padding:20rpx;font-size:28rpx;"> v1.0.0 beta</view>
 
   <view class="zan-dialog {{ showDialog1 ? 'zan-dialog--show' : '' }}">
     <view class="zan-dialog__mask" />

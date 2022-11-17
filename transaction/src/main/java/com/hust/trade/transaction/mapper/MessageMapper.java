@@ -20,7 +20,6 @@ public interface MessageMapper extends BaseMapper<Message> {
    * @param message
    * @return
    */
-  Integer insertMessageDetail(Message message);
   List<Message> getAllMessage();
   List<Message> getMessageByCategoryId(@Param("id") Integer id);
   List<Message> getMessageByCategoryAndKeyword(@Param("id") Long id,@Param("keyword") String keyword);

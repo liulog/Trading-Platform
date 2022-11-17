@@ -16,12 +16,5 @@
     user_id, user_openid, user_gender, user_avatar, user_nickname, user_is_admin, user_allow, user_create_time
   </sql>
 
-  <insert id="insertUserMessage">
-    <selectKey resultType="Integer" keyProperty="userId">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    INSERT INTO user (user_openid, user_gender, user_avatar, user_nickname) VALUES
-    (#{userOpenid},#{userGender},#{userAvatar},#{userNickname})
-  </insert>
 
 </mapper>

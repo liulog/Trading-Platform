@@ -11,7 +11,7 @@
   </sql>
 
   <select id="getAllCollectionMessageByUserId" resultMap="BaseResultMap">
-    SELECT  * FROM collect WHERE user_id=#{id} order by collect_id desc
+    SELECT  <include refid="Base_Column_List"/>  FROM collect WHERE user_id=#{id} order by collect_id desc
   </select>
 
 </mapper>
