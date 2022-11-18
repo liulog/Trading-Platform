@@ -29,7 +29,7 @@ mybatis-plus:
 spring.jackson.date-format: yyyy-MM-dd HH:mm
 
 #这个是时区，一定要加，否则会默认为格林尼治时间，即少8小时
-spring.jackson.time-zone: GMT+8
+#spring.jackson.time-zone: GMT+8
 
 # 分页相关配置
 pagehelper:
