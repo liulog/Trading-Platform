@@ -1,4 +1,4 @@
-// pages/welcome/welcome.js
+// pages/welcome/welcome.js/欢迎页面
 Page({
   /**
    * 页面的初始数据
