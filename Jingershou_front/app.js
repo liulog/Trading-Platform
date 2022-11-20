@@ -1,4 +1,4 @@
-//app.js
+//app.js，整个小程序的逻辑架构
 App({
   globalData: {
     share: false, // 分享默认为false
